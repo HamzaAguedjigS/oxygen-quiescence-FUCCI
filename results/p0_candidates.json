@@ -1,0 +1,196 @@
+{
+  "meta": {
+    "seed": 20261022,
+    "n_draws": 20000,
+    "targets": {
+      "R0": 1.7,
+      "Nstar": 0.2,
+      "qstar": 0.5,
+      "qnorm_max": 0.12
+    },
+    "fixed": {
+      "S0": 1.0,
+      "gamma": 1.0,
+      "delta": 0.02,
+      "lamR": 0.1,
+      "lamG": 0.1,
+      "lamQ": 0.05,
+      "n": 2.0,
+      "muQ0": 0.0,
+      "etaG": 0.2
+    },
+    "note": "Free parameters drawn log-uniformly (KN, Kal, mu0, mumax, Kmu, muQmax) or uniformly (nal, Kbe, p); muR=muG share (mu0, mumax, Kmu); KmuQ=Kmu; values rounded to 2 s.f."
+  },
+  "candidates": {
+    "C1": {
+      "label": "companion study, central values",
+      "params": {
+        "S0": 1.0,
+        "gamma": 1.0,
+        "delta": 0.02,
+        "lamR": 0.1,
+        "lamG": 0.1,
+        "lamQ": 0.05,
+        "k1bar": 0.016,
+        "KN": 0.039,
+        "k2": 0.1,
+        "p": 0.97,
+        "albar": 1.0,
+        "Kal": 0.038,
+        "nal": 2.9,
+        "bebar": 0.00646,
+        "Kbe": 0.34,
+        "n": 2.0,
+        "muR0": 0.00062,
+        "muRmax": 0.011,
+        "KmuR": 0.12,
+        "muG0": 0.00062,
+        "muGmax": 0.011,
+        "KmuG": 0.12,
+        "muQ0": 0.0,
+        "muQmax": 0.019,
+        "KmuQ": 0.12,
+        "etaG": 0.2,
+        "u1": 0.0,
+        "u2": 0.0
+      },
+      "characteristics": {
+        "R0": 1.743464841709499,
+        "piS": 0.8943903823052372,
+        "piM": 0.9823320563016602,
+        "piret": 0.9921966611744956,
+        "Lambda": 0.009794324862568395,
+        "doubling_days": 2.948761954354602,
+        "Nstar": 0.1978339424861043,
+        "Pstar": 28.920442435520684,
+        "comp_star": [
+          0.46391691656173695,
+          0.05917894368296902,
+          0.476904139755294
+        ],
+        "fred_star": 0.940821056317031,
+        "comp_normoxic": [
+          0.840827976049937,
+          0.11603126813233737,
+          0.0431407558177256
+        ],
+        "fgreen_normoxic": 0.11603126813233737,
+        "max_re_eig": -0.009355961997918341,
+        "oscillatory": true,
+        "u1_star": 0.8756179549095645,
+        "tauG1_h": 64.9375,
+        "tauS_h": 10.0,
+        "tauexit_days": 7.195562435500515,
+        "tauentry_h": 1.0,
+        "alpha_normoxic_per_h": 7.609206716296745e-05,
+        "T90_days": 23.049999999999997,
+        "reox_t50_green_days": 3.5199999999999996,
+        "reox_Qfrac_at_t50": 0.4986222211550882
+      },
+      "free": {
+        "KN": 0.039,
+        "Kal": 0.038,
+        "nal": 2.9,
+        "Kbe": 0.34,
+        "p": 0.97,
+        "mu0": 0.00062,
+        "mumax": 0.011,
+        "Kmu": 0.12,
+        "muQmax": 0.019
+      },
+      "loss": 0.002992536646776421,
+      "anchors": {
+        "label": "companion study, central values",
+        "tauG1": 65.0,
+        "tauS": 10.0,
+        "tauexit": 172.8,
+        "tauentry": 1.0
+      }
+    },
+    "C2": {
+      "label": "companion study, fast bounds",
+      "params": {
+        "S0": 1.0,
+        "gamma": 1.0,
+        "delta": 0.02,
+        "lamR": 0.1,
+        "lamG": 0.1,
+        "lamQ": 0.05,
+        "k1bar": 0.0197,
+        "KN": 0.2,
+        "k2": 0.1,
+        "p": 0.9,
+        "albar": 1.0,
+        "Kal": 0.043,
+        "nal": 4.2,
+        "bebar": 0.0158,
+        "Kbe": 0.54,
+        "n": 2.0,
+        "muR0": 0.00099,
+        "muRmax": 0.027,
+        "KmuR": 0.061,
+        "muG0": 0.00099,
+        "muGmax": 0.027,
+        "KmuG": 0.061,
+        "muQ0": 0.0,
+        "muQmax": 0.005,
+        "KmuQ": 0.061,
+        "etaG": 0.2,
+        "u1": 0.0,
+        "u2": 0.0
+      },
+      "characteristics": {
+        "R0": 1.6849917338942724,
+        "piS": 0.8659028107560847,
+        "piM": 0.9752072177466757,
+        "piret": 0.9977040213575938,
+        "Lambda": 0.009154709632331127,
+        "doubling_days": 3.1547841147613602,
+        "Nstar": 0.20121455167015118,
+        "Pstar": 28.7406165946324,
+        "comp_star": [
+          0.45800545986569136,
+          0.04218293483539153,
+          0.4998116052989171
+        ],
+        "fred_star": 0.9578170651646084,
+        "comp_normoxic": [
+          0.7796202957523557,
+          0.11458467434798944,
+          0.10579502989965484
+        ],
+        "fgreen_normoxic": 0.11458467434798944,
+        "max_re_eig": -0.006190744417486157,
+        "oscillatory": true,
+        "u1_star": 0.8362849436052107,
+        "tauG1_h": 60.91370558375635,
+        "tauS_h": 10.0,
+        "tauexit_days": 3.4061181434599157,
+        "tauentry_h": 1.0,
+        "alpha_normoxic_per_h": 1.8220769833780284e-06,
+        "T90_days": 33.85,
+        "reox_t50_green_days": 2.1199999999999997,
+        "reox_Qfrac_at_t50": 0.5045585290033198
+      },
+      "free": {
+        "KN": 0.2,
+        "Kal": 0.043,
+        "nal": 4.2,
+        "Kbe": 0.54,
+        "p": 0.9,
+        "mu0": 0.00099,
+        "mumax": 0.027,
+        "Kmu": 0.061,
+        "muQmax": 0.005
+      },
+      "loss": 0.00011543190910564166,
+      "anchors": {
+        "label": "companion study, fast bounds",
+        "tauG1": 61.0,
+        "tauS": 10.0,
+        "tauexit": 81.6,
+        "tauentry": 1.0
+      }
+    }
+  }
+}

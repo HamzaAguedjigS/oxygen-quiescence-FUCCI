@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated article."
+title: "Computational material for an oxygen-regulated cell-cycle model with hidden quiescence"
+type: software
+authors:
+  - family-names: Aguedjig
+    given-names: Hamza
+    email: hamza.aguedjig@um5r.ac.ma
+  - family-names: Douiri
+    given-names: Sidi Mohamed
+  - family-names: El Harraki
+    given-names: Imad
+  - family-names: El Hammani
+    given-names: Mohammed
+repository-code: "https://github.com/HamzaAguedjigS/oxygen-quiescence-FUCCI"
+version: 1.0.0
+date-released: 2026-10-24
+keywords:
+  - mathematical oncology
+  - cell-cycle dynamics
+  - quiescence
+  - oxygen limitation
+  - FUCCI
+  - bifurcation analysis
+preferred-citation:
+  type: article
+  title: "A hidden quiescent reservoir shapes extinction thresholds and limits FUCCI-based inference in an oxygen-regulated cell-cycle model"
+  authors:
+    - family-names: Aguedjig
+      given-names: Hamza
+    - family-names: Douiri
+      given-names: Sidi Mohamed
+    - family-names: El Harraki
+      given-names: Imad
+    - family-names: El Hammani
+      given-names: Mohammed

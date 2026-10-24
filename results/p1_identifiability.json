@@ -1,0 +1,210 @@
+{
+  "order": 13,
+  "points": {
+    "C1": {
+      "kappa": "16/1039",
+      "alpha": "3088/40582417",
+      "dR": "1259/700000",
+      "k2": "1/10",
+      "dG": "1259/700000",
+      "p": "97/100",
+      "beta": "323/55780",
+      "dQ": "57/28000"
+    },
+    "random1": {
+      "kappa": "88953/1000000",
+      "alpha": "49163/1000000",
+      "dR": "12403/1000000",
+      "k2": "37427/500000",
+      "dG": "129/200000",
+      "p": "116/125",
+      "beta": "3073/1000000",
+      "dQ": "16461/1000000"
+    },
+    "random2": {
+      "kappa": "39277/200000",
+      "alpha": "2533/1000000",
+      "dR": "657/1000000",
+      "k2": "82343/1000000",
+      "dG": "487/1000000",
+      "p": "359/500",
+      "beta": "15317/500000",
+      "dQ": "3117/1000000"
+    },
+    "random3": {
+      "kappa": "97949/200000",
+      "alpha": "23877/1000000",
+      "dR": "4777/1000000",
+      "k2": "73531/250000",
+      "dG": "381/1000000",
+      "p": "289/500",
+      "beta": "50373/1000000",
+      "dQ": "131/1000000"
+    }
+  },
+  "table": {
+    "(kappa, beta) | green fraction": {
+      "n_params": 2,
+      "ranks": {
+        "C1": 2,
+        "random1": 2,
+        "random2": 2,
+        "random3": 2
+      }
+    },
+    "(kappa, beta) | green fraction + total abundance": {
+      "n_params": 2,
+      "ranks": {
+        "C1": 2,
+        "random1": 2,
+        "random2": 2,
+        "random3": 2
+      }
+    },
+    "(kappa, beta) | green fraction + AO readout": {
+      "n_params": 2,
+      "ranks": {
+        "C1": 2,
+        "random1": 2,
+        "random2": 2,
+        "random3": 2
+      }
+    },
+    "(kappa, beta) | green fraction + abundance + AO": {
+      "n_params": 2,
+      "ranks": {
+        "C1": 2,
+        "random1": 2,
+        "random2": 2,
+        "random3": 2
+      }
+    },
+    "(kappa, beta, k2, p) | green fraction": {
+      "n_params": 4,
+      "ranks": {
+        "C1": 4,
+        "random1": 4,
+        "random2": 4,
+        "random3": 4
+      }
+    },
+    "(kappa, beta, k2, p) | green fraction + total abundance": {
+      "n_params": 4,
+      "ranks": {
+        "C1": 4,
+        "random1": 4,
+        "random2": 4,
+        "random3": 4
+      }
+    },
+    "(kappa, beta, k2, p) | green fraction + AO readout": {
+      "n_params": 4,
+      "ranks": {
+        "C1": 4,
+        "random1": 4,
+        "random2": 4,
+        "random3": 4
+      }
+    },
+    "(kappa, beta, k2, p) | green fraction + abundance + AO": {
+      "n_params": 4,
+      "ranks": {
+        "C1": 4,
+        "random1": 4,
+        "random2": 4,
+        "random3": 4
+      }
+    },
+    "(kappa, beta, k2, p, alpha, dQ) | green fraction": {
+      "n_params": 6,
+      "ranks": {
+        "C1": 5,
+        "random1": 5,
+        "random2": 5,
+        "random3": 5
+      }
+    },
+    "(kappa, beta, k2, p, alpha, dQ) | green fraction + total abundance": {
+      "n_params": 6,
+      "ranks": {
+        "C1": 6,
+        "random1": 6,
+        "random2": 6,
+        "random3": 6
+      }
+    },
+    "(kappa, beta, k2, p, alpha, dQ) | green fraction + AO readout": {
+      "n_params": 6,
+      "ranks": {
+        "C1": 6,
+        "random1": 6,
+        "random2": 6,
+        "random3": 6
+      }
+    },
+    "(kappa, beta, k2, p, alpha, dQ) | green fraction + abundance + AO": {
+      "n_params": 6,
+      "ranks": {
+        "C1": 6,
+        "random1": 6,
+        "random2": 6,
+        "random3": 6
+      }
+    },
+    "all eight rates | green fraction": {
+      "n_params": 8,
+      "ranks": {
+        "C1": 5,
+        "random1": 5,
+        "random2": 5,
+        "random3": 5
+      }
+    },
+    "all eight rates | green fraction + total abundance": {
+      "n_params": 8,
+      "ranks": {
+        "C1": 6,
+        "random1": 6,
+        "random2": 6,
+        "random3": 6
+      }
+    },
+    "all eight rates | green fraction + AO readout": {
+      "n_params": 8,
+      "ranks": {
+        "C1": 7,
+        "random1": 7,
+        "random2": 7,
+        "random3": 7
+      }
+    },
+    "all eight rates | green fraction + abundance + AO": {
+      "n_params": 8,
+      "ranks": {
+        "C1": 8,
+        "random1": 8,
+        "random2": 8,
+        "random3": 8
+      }
+    }
+  },
+  "null_direction_C1_fraction_6params": {
+    "params": [
+      "kappa",
+      "beta",
+      "k2",
+      "p",
+      "alpha",
+      "dQ"
+    ],
+    "vector": [
+      0.008545272075854635,
+      -0.008545272075854635,
+      -1.964984281839096e-05,
+      -0.00842042980134504,
+      -1.0,
+      0.0009954492383097055
+    ],
+    "sv_ratio": 3.3595857134050257e-19
+  }
+}

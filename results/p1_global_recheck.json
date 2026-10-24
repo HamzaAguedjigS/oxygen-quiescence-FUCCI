@@ -1,0 +1,10 @@
+{
+  "seed": 1808,
+  "horizon_relaxation_times": 200.0,
+  "tol": 0.001,
+  "n_runs": 3600,
+  "n_converged": 3600,
+  "worst_err": 1.830365457119445e-08,
+  "n_unstable_in_sets": 0,
+  "max_T_hours": 25660650.521538746
+}
