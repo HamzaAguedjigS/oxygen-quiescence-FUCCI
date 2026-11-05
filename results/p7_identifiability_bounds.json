@@ -1,0 +1,26 @@
+{
+  "n_coords_GP": 6,
+  "rank_coords_GP": 6,
+  "n_coords_all": 8,
+  "rank_coords_all": 8,
+  "bound_f": 5,
+  "bound_fP": 6,
+  "bound_fy": 7,
+  "bound_fPy": 8,
+  "numerator_G": "beta*kappa",
+  "numerator_R": "beta*dG + beta*k2 + beta*s",
+  "invariance_max_df": 8.326672684688674e-17,
+  "invariance_max_dy": 3.3306690738754696e-16,
+  "abundance_changes": 1.5120000000000022,
+  "six_param_log_direction": {
+    "kappa": -1.0148261166537635,
+    "alpha": 118.75878352912424,
+    "dR": -0.0,
+    "k2": 0.0023335914296495233,
+    "dG": -0.0,
+    "p": 1.0,
+    "beta": 1.0148261166537669,
+    "dQ": -0.11821834060668578
+  },
+  "log_kappa_beta_change": -1.3642420526593924e-11
+}

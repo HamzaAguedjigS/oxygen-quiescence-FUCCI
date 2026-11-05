@@ -4,6 +4,7 @@ Run this script after recomputing an analysis so that numerical values in the
 manuscript remain synchronized with the archived outputs.
 """
 import json
+import numpy as np
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -24,6 +25,18 @@ def f(x, nd):
     return f"{x:.{nd}f}"
 
 
+def f_up(x, nd):
+    """Round upward for a reported upper bound."""
+    q = 10 ** nd
+    return f"{np.ceil(x * q - 1e-9) / q:.{nd}f}"
+
+
+def f_down(x, nd):
+    """Round downward for a reported lower bound."""
+    q = 10 ** nd
+    return f"{np.floor(x * q + 1e-9) / q:.{nd}f}"
+
+
 def main():
     c = json.load(open(os.path.join(RES, "p0_candidates.json"), encoding="utf-8"))
     C1 = c["candidates"]["C1"]
@@ -31,19 +44,19 @@ def main():
     idf = json.load(open(os.path.join(RES, "p1_identifiability.json"), encoding="utf-8"))
 
     m = {}
-    # Model parameters (Table B1)
+    # Model parameters (Table B1).
     names = dict(kOneBar="k1bar", KN="KN", kTwo="k2", p="p", alphaBar="albar", Kalpha="Kal", malpha="nal",
                  betaBar="bebar", Kbeta="Kbe", nbeta="n", muZero="muR0", muMax="muRmax", Kmu="KmuR",
                  muQMax="muQmax", lR="lamR", lG="lamG", lQ="lamQ", delta="delta", Szero="S0", gam="gamma",
                  etaG="etaG")
     for mac, key in names.items():
         m["Par" + mac] = g(P[key], 3)
-    # Derived time scales
+    # Realised time scales.
     m["ValTauGOne"] = f(ch["tauG1_h"], 0)
     m["ValTauS"] = f(ch["tauS_h"], 0)
     m["ValTauExit"] = f(ch["tauexit_days"], 1)
     m["ValTauEntry"] = f(ch["tauentry_h"], 0)
-    # Reference-regime characteristics
+    # Reference-regime characteristics.
     m["ValRnot"] = f(ch["R0"], 2)
     m["ValPiS"] = f(ch["piS"], 3)
     m["ValPiM"] = f(ch["piM"], 3)
@@ -63,7 +76,7 @@ def main():
     m["ValReoxQ"] = f(ch["reox_Qfrac_at_t50"], 2)
     m["ValSeedPzero"] = str(c["meta"]["seed"])
     m["ValNdraws"] = f"{c['meta']['n_draws']:,}".replace(",", "\\,")
-    # Structural-identifiability ranks
+    # Structural-identifiability ranks.
     t = idf["table"]
     key = lambda s, o: t[f"{s} | {o}"]["ranks"]["C1"]
     m["RankGreenSix"] = str(key("(kappa, beta, k2, p, alpha, dQ)", "green fraction"))
@@ -73,7 +86,7 @@ def main():
     m["RankAllEight"] = str(key("all eight rates", "green fraction + abundance + AO"))
     m["IdOrder"] = str(idf["order"])
 
-    # Reference-regime dynamics
+    # Reference-regime dynamics.
     p2f = os.path.join(RES, "p2_dynamics.json")
     if os.path.exists(p2f):
         import numpy as np
@@ -103,14 +116,14 @@ def main():
         m["ValTepsDsmall"] = g(dd[0], 1)
         m["ValTepsSixSmall"] = f"{T6[0]:,.0f}".replace(",", "\\,")
         m["ValTepsTwoSmall"] = f"{T2[0]:,.0f}".replace(",", "\\,")
-        m["ValTepsDlarge"] = f(dd[-1], 2)
+        m["ValTepsDlarge"] = f(dd[-1], 3)
         m["ValTepsSixLarge"] = f"{T6[-1]:,.0f}".replace(",", "\\,")
         E, names = arr["D_E"], [str(n) for n in arr["D_names"]]
-        m["ValSensFredMax"] = f(np.abs(E[:, 2]).max(), 2)
+        m["ValSensFredMax"] = f_up(np.abs(E[:, 2]).max(), 3)
         m["ValSensLambdaP"] = f(E[names.index("p"), 0], 2)
         m["ValSensPstarM"] = f(E[names.index("nal"), 1], 2)
 
-    # Stability scan and Hopf example
+    # Stability scan and Hopf example.
     for fn in ("p1_stability_scan.json", "p1_hopf_example.json", "p1_hopf_analysis.json"):
         if not os.path.exists(os.path.join(RES, fn)):
             break
@@ -134,7 +147,7 @@ def main():
         m["ValCycleFredMin"] = f(hx["example_cycle"]["fred_range"][0], 2)
         m["ValCycleFredMax"] = f(hx["example_cycle"]["fred_range"][1], 2)
 
-    # Observation ridge and profile calculations
+    # Observation ridge and profile calculations.
     obf = os.path.join(RES, "p2_observability.json")
     if os.path.exists(obf):
         ob = json.load(open(obf, encoding="utf-8"))
@@ -153,7 +166,7 @@ def main():
         m["ValObsCvPct"] = f(100 * ob["noise"]["cv_P"], 0)
         m["ValObsSdY"] = f(ob["noise"]["sd_y"], 2)
 
-    # Reference-regime Monte Carlo experiment
+    # Reference-regime Monte Carlo experiment.
     mcf = os.path.join(RES, "p2_mc_reference.json")
     if os.path.exists(mcf):
         mc = json.load(open(mcf, encoding="utf-8"))
@@ -175,7 +188,7 @@ def main():
         m["McDiffEarlyLo"] = f(100 * pe["ci"][0], 1)
         m["McDiffEarlyHi"] = f(100 * pe["ci"][1], 1)
 
-    # Global convergence check without a time cap
+    # Global convergence check without a time cap.
     grf = os.path.join(RES, "p1_global_recheck.json")
     if os.path.exists(grf):
         import numpy as np
@@ -184,18 +197,18 @@ def main():
         m["ValGlobalConverged"] = f"{gr['n_converged']:,}".replace(",", "\\,")
         m["ValGlobalWorstExp"] = str(int(np.ceil(np.log10(gr["worst_err"]))))
 
-    # Morris screening
+    # Morris screening.
     mof = os.path.join(RES, "p2_morris.json")
     if os.path.exists(mof):
         import numpy as np
         mo = json.load(open(mof, encoding="utf-8"))
         mu = np.array(mo["mu_star"])
-        m["MorrisFredMax"] = f(mu[:, 2].max(), 2)
-        m["MorrisSpearmanMin"] = f(min(min(v) for v in mo["spearman_other_seeds"].values()), 2)
+        m["MorrisFredMax"] = f_up(mu[:, 2].max(), 3)
+        m["MorrisSpearmanMin"] = f_down(min(min(v) for v in mo["spearman_other_seeds"].values()), 2)
         m["MorrisDropped"] = str(mo["dropped"])
         m["MorrisR"] = str(mo["design"]["R"])
 
-    # Parameter-ensemble Monte Carlo experiment
+    # Parameter-ensemble Monte Carlo experiment.
     enf = os.path.join(RES, "p2_mc_ensemble.json")
     if os.path.exists(enf):
         en = json.load(open(enf, encoding="utf-8"))
@@ -205,7 +218,7 @@ def main():
             m["EnsHolds" + short] = str(en["conclusions"][key]["holds"])
             m["EnsSig" + short] = str(en["conclusions"][key]["significant"])
 
-    # Exposure times near the extinction boundary
+    # Exposure times near the extinction boundary.
     exf = os.path.join(RES, "p5_exposure_boundary.json")
     if os.path.exists(exf):
         exj = json.load(open(exf, encoding="utf-8"))
@@ -213,7 +226,32 @@ def main():
         m["ValTepsTwoCrit"] = f(ex[0.0]["T_0.01"], 0)
         m["ValTepsRatioSmall"] = f(ex[1e-3]["ratio_1e-06"], 2)
         m["ValTepsRatioLarge"] = f(ex["large"]["ratio_1e-06"], 2)
-        m["ValSensNbetaMax"] = g(max(abs(v) for v in exj["nbeta_elasticities"].values()), 1)
+        m["ValSensNbetaMax"] = f_up(max(abs(v) for v in exj["nbeta_elasticities"].values()), 3)
+
+    # Additional quantities introduced during the final manuscript revision.
+    import sys
+    sys.path.insert(0, HERE)
+    import model as M
+    ref = M.Params(**c["candidates"]["C1"]["params"])
+
+    def q_normox(pr):
+        w, V = np.linalg.eig(M.A(pr.Nhat, pr))
+        v = np.abs(V[:, np.argmax(w.real)].real)
+        return v[2] / v.sum()
+
+    m["ValQnormoxHypPct"] = f(100 * q_normox(ref.copy(nal=1.0)), 0)
+    hxf = os.path.join(RES, "p1_hopf_example.json")
+    if os.path.exists(hxf):
+        he = json.load(open(hxf, encoding="utf-8"))
+        hd = ref.as_dict()
+        hd.update(he["base_params"])
+        hp = M.Params(**hd)
+        Eh = M.equilibrium(hp)
+        m["ValHopfMsample"] = f(he["m_example"], 2)
+        m["ValHopfNstar"] = f(Eh[3], 3)
+        m["ValHopfKal"] = f(hp.Kal, 4)
+        m["ValHopfLamRatio"] = f(hp.lamQ / hp.lamR, 0)
+        m["ValHopfExitDays"] = f(1.0 / M.beta(hp.Nhat, hp) / 24.0, 1)
 
     lines = ["% Automatically produced by code/make_macros.py.",
              "% Edit the source data or generating script rather than this file."]

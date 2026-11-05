@@ -46,6 +46,7 @@ From the repository root, run:
 
 ```text
 python code/make_macros.py
+python code/make_macros_p7.py
 python code/make_figures.py
 ```
 
@@ -69,6 +70,10 @@ The principal analysis scripts are:
 - `p2_montecarlo.py ensemble`: parameter-ensemble Monte Carlo experiments.
 - `p2_morris.py`: global sensitivity screen.
 - `p5_exposure_boundary.py`: near-boundary exposure calculations.
+- `p7_identifiability_bounds.py`: exact transfer-function rank bounds and invariance checks.
+- `p7_critical_and_numbers.py`: critical-threshold asymptotics, profiles, regrowth and clamp checks.
+- `p7_hopf_lyapunov.py`: first Lyapunov coefficient and independent Hopf diagnostics.
+- `p7_mc_robustness.py`: robustness experiments for bounds, nuisance rates and readout weights.
 
 Several calculations are intentionally computationally intensive. Each script
 writes its outputs to `results/`; random seeds and solver tolerances are fixed
